@@ -20,7 +20,7 @@ public class Pilha {
     }
 
     public void insere(int valor){
-        if (!cheia()){
+        if (!isCheia()){
             this.topo = this.topo + 1;
             this.dados[topo] = valor;
             System.out.println("Dado inserido com sucesso");
@@ -29,17 +29,24 @@ public class Pilha {
             System.out.println("Pilha cheia");
         }
     }
-    
-    public boolean cheia(){
-        return (this.topo == this.capacidade - 1) ? true : false; //ternary expression
+    public String Cheia(){
+        return (this.topo == this.capacidade - 1) ? "A pilha esta cheia" : "A pilha nao esta cheia"; //ternary expression
+    }
+    public String Vazia(){
+        return (this.topo == -1) ? "A pilha esta vazia" : "A pilha nao esta vazia";
+    }
+
+
+    public boolean isCheia(){
+        return (this.topo == this.capacidade - 1);
     }
     
-    public boolean vazia(){
-        return (this.topo == -1) ? true : false;
+    public boolean isVazia(){
+        return (this.topo == -1);
     }
     
     public void remove(){
-        if(!vazia()){
+        if(!isVazia()){
             System.out.println("Removendo valor: " + this.dados[topo]);
             this.topo --;
             System.out.println("Valor removido com sucesso");
@@ -55,7 +62,8 @@ public class Pilha {
             do{
                 System.out.println("Posicao: " + counter + "\nDado: " + this.dados[counter]);
                 counter++;
-            } while(counter < this.topo);
+
+            } while(counter < this.topo+1);
         }
         else{
             System.out.println("A pilha esta vazia");
